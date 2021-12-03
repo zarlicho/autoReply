@@ -16,7 +16,7 @@ actions = ActionChains(driver)
 
 def channel(yt, komen, jumlah, waktu, menu):
     driver.get(yt)
-    driver.execute_script("scroll(0, 360)")
+    driver.execute_script("scroll(0, 387)")
     time.sleep(3)
     WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, "/html/body/ytd-app/div/ytd-page-manager/ytd-watch-flexy/div[5]/div[1]/div/ytd-comments/ytd-item-section-renderer/div[1]/ytd-comments-header-renderer/div[1]/span/yt-sort-filter-sub-menu-renderer/yt-dropdown-menu/tp-yt-paper-menu-button/div/tp-yt-paper-button"))).click()
     if menu == "lama":
@@ -27,8 +27,10 @@ def channel(yt, komen, jumlah, waktu, menu):
         rpl = "/html/body/ytd-app/div/ytd-page-manager/ytd-watch-flexy/div[5]/div[1]/div/ytd-comments/ytd-item-section-renderer/div[3]/ytd-comment-thread-renderer[%s]/ytd-comment-renderer/div[3]/div[2]/ytd-comment-action-buttons-renderer/div[1]/div[4]"%(x)
         bls = "/html/body/ytd-app/div/ytd-page-manager/ytd-watch-flexy/div[5]/div[1]/div/ytd-comments/ytd-item-section-renderer/div[3]/ytd-comment-thread-renderer[%s]/ytd-comment-renderer/div[3]/div[2]/ytd-comment-action-buttons-renderer/div[2]/ytd-comment-reply-dialog-renderer/ytd-commentbox/div[2]/div/div[2]/tp-yt-paper-input-container/div[2]/div/div[1]/ytd-emoji-input/yt-user-mention-autosuggest-input/yt-formatted-string/div"%(x)
         btn = "/html/body/ytd-app/div/ytd-page-manager/ytd-watch-flexy/div[5]/div[1]/div/ytd-comments/ytd-item-section-renderer/div[3]/ytd-comment-thread-renderer[%s]/ytd-comment-renderer/div[3]/div[2]/ytd-comment-action-buttons-renderer/div[2]/ytd-comment-reply-dialog-renderer/ytd-commentbox/div[2]/div/div[4]/div[5]/ytd-button-renderer[2]/a/tp-yt-paper-button/yt-formatted-string"%(x)
+        lk = "/html/body/ytd-app/div/ytd-page-manager/ytd-watch-flexy/div[5]/div[1]/div/ytd-comments/ytd-item-section-renderer/div[3]/ytd-comment-thread-renderer[%s]/ytd-comment-renderer/div[3]/div[2]/ytd-comment-action-buttons-renderer/div[1]/ytd-toggle-button-renderer[1]/a/yt-icon-button/button/yt-icon"%(x)
         el = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, rpl)))
         ActionChains(driver).move_to_element(el).perform()
+        WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, lk))).click() 
         WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, rpl))).click()  
         WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, bls))).send_keys(komen)
         WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, btn))).click()
